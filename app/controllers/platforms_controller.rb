@@ -1,2 +1,0 @@
-class PlatformsController < ApplicationController
-end

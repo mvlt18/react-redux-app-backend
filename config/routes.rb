@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :todos
-  resources :courses
-  resources :platforms
+
+  namespace :api do
+    namespace :v1 do
+      resources :todos
+      resources :courses
+      resources :platforms
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
