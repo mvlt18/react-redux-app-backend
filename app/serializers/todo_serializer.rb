@@ -1,5 +1,4 @@
-class TodoSerializer
-  include FastJsonapi::ObjectSerializer
-  attributes :content, :due_date
-  belongs_to :course
+class TodoSerializer < ActiveModel::Serializer
+    attributes :content, :due_date
+    belongs_to :course
 end

@@ -3,12 +3,9 @@ class Api::V1::CoursesController < ApplicationController
 
   def index
     @courses = Course.all
-    options = {
-      include: [:todos]
-    }
-    courses_json = CourseSerializer.new(@courses, options).serialized_json
-    render json: courses_json, status: 200
+    render json: @courses, only: [:name, :url, :start_date, :end_date, :status], status: 200
   end
+
 
   def show
     render json: @course, status: 200
@@ -16,12 +13,7 @@ class Api::V1::CoursesController < ApplicationController
 
   def create
     @course = Course.create(course_params)
-
-    options = {
-      include: [:todos]
-    }
-
-    render json: CourseSerializer.new(@course, options), status: :created
+    render json: CourseSerializer.new(@course), status: :created
   end
 
 

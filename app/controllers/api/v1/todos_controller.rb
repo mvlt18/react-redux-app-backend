@@ -3,8 +3,7 @@ class Api::V1::TodosController < ApplicationController
 
   def index
     @todos = Todo.all
-    todos_json = TodoSerializer.new(@todos).serialized_json
-    render json: todos_json, status: 200
+    render json: @todos, only: [:content, :due_date], status: 200
   end
 
   def show
