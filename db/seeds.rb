@@ -10,11 +10,15 @@ Platform.destroy_all
 Course.destroy_all
 Todo.destroy_all
 
-puts "Seeding date..."
+puts "Seeding data..."
 
 
 # Platform Seed Data
 p1 = Platform.create(name: "Udemy", url: "https://www.udemy.com/", image: "https://www.udemy.com/staticx/udemy/images/v6/default-meta-image.png")
+p2 = Platform.create(name: "Coursera", url: "https://www.coursera.org/", image: "http://seekvectorlogo.com/wp-content/uploads/2019/01/coursera-vector-logo.png")
+p3 = Platform.create(name: "EdX", url: "https://www.edx.org/", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/EdX.svg/1200px-EdX.svg.png")
+p4 = Platform.create(name: "Khan Academy", url: "https://www.khanacademy.org/", image: "https://66.media.tumblr.com/f1bd3cd7e4b20dba634393462326859b/tumblr_inline_pcdui455cU1r8ovh1_540.png")
+p5 = Platform.create(name: "MIT OCW", url: "https://ocw.mit.edu/index.htm", image: "https://res-5.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1455163255/kmvd59j8ix03hjt1t6rj.png")
 
 
 # Course Seed Data
