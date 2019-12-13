@@ -6,14 +6,17 @@ class Api::V1::CoursesController < ApplicationController
     render json: @courses, only: [:name, :url, :start_date, :end_date, :status], status: 200
   end
 
+  def create
+    @course = Course.new(course_params)
+    if @course.save
+      render json: @courses, status: 200
+    else
+      render json: {error: 'There was an error creating this course'}
+    end
+  end
 
   def show
     render json: @course, status: 200
-  end
-
-  def create
-    @course = Course.create(course_params)
-    render json: CourseSerializer.new(@course), status: :created
   end
 
 

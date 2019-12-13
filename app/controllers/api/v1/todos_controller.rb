@@ -6,13 +6,17 @@ class Api::V1::TodosController < ApplicationController
     render json: @todos, only: [:content, :due_date], status: 200
   end
 
-  def show
-    render json: @todo, status: 200
+  def create
+    @todo = Todo.new(todo_params)
+    if @todo.save
+      render json: @todos, status: 200
+    else
+      render json: {error: 'There was an error creating this todo'}
+    end
   end
 
-  def create
-    @todo = Todo.create(todo_params)
-    render json: TodoSerializer.new(@todo), status: :created
+  def show
+    render json: @todo, status: 200
   end
 
 
