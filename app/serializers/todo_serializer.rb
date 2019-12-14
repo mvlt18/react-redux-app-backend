@@ -1,4 +1,4 @@
 class TodoSerializer < ActiveModel::Serializer
-    attributes :content, :due_date
+    attributes :id, :content, :due_date
     belongs_to :course
 end

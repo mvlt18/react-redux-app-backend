@@ -1,4 +1,4 @@
 class PlatformSerializer < ActiveModel::Serializer
-    attributes :name, :url, :image, :id
+    attributes :id, :name, :url, :image
     has_many :courses
 end
