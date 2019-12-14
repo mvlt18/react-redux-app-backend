@@ -9,7 +9,7 @@ class Api::V1::CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      render json: @courses, status: 200
+      render json: @course, status: 200
     else
       render json: {error: 'There was an error creating this course'}
     end

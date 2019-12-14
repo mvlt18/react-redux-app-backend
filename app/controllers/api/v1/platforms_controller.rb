@@ -10,7 +10,7 @@ class Api::V1::PlatformsController < ApplicationController
     # binding.pry
     @platform = Platform.new(platform_params)
     if @platform.save
-      render json: @platforms, only: [:name, :url, :image], status: 200
+      render json: @platform, only: [:name, :url, :image], status: 200
     else
       render json: {error: 'There was an error creating this Platform'}
     end
