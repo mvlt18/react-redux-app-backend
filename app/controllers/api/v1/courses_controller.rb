@@ -1,4 +1,5 @@
 class Api::V1::CoursesController < ApplicationController
+  before_action :set_platform
   before_action :set_params, only: [:show]
 
   def index
@@ -7,9 +8,10 @@ class Api::V1::CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(course_params)
+    # binding.pry
+    @course = @platform.courses.new(course_params)
     if @course.save
-      render json: @course, status: 200
+      render json: @platform, status: 200
     else
       render json: {error: 'There was an error creating this course'}
     end
@@ -21,6 +23,10 @@ class Api::V1::CoursesController < ApplicationController
 
 
   private
+
+  def set_platform
+    @platform = Platform.find(params[:platform_id])
+  end
 
   def course_params
     params.require(:course).permit(:name, :url, :start_date, :end_date, :status, :platform_id)
