@@ -1,10 +1,10 @@
 class Api::V1::CoursesController < ApplicationController
-  before_action :set_platform
-  before_action :set_params, only: [:show]
+  before_action :set_platform_params, only: [:create]
+  before_action :set_course_params, only: [:show]
 
   def index
     @courses = Course.all
-    render json: @courses, only: [:name, :url, :start_date, :end_date, :status], status: 200
+    render json: @courses, status: 200
   end
 
   def create
@@ -24,7 +24,11 @@ class Api::V1::CoursesController < ApplicationController
 
   private
 
-  def set_platform
+  def set_course_params
+    @course = Course.find(params[:id])
+  end
+
+  def set_platform_params
     @platform = Platform.find(params[:platform_id])
   end
 
@@ -32,8 +36,6 @@ class Api::V1::CoursesController < ApplicationController
     params.require(:course).permit(:name, :url, :start_date, :end_date, :status, :platform_id)
   end
 
-  def set_params
-    @course = Course.find(params[:id])
-  end
+
 
 end
