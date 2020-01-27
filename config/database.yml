@@ -77,9 +77,11 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
+
 production:
   <<: *default
-  database: react-redux-app-backend_production
-  username: react-redux-app-backend
-  password: <%= ENV['REACT-REDUX-APP-BACKEND_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_URL'] %>
+  port: 5432
